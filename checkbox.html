@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <label for="myCheckbox">Check No 1</label>
+    <input type="checkbox" id="myCheckbox" name="Check No 1">
+
+    <label for="myCheckbox2">Check No 2</label>
+    <input type = "checkbox" id = "newCheckbox" name="Check No 2">
+
+    <label for="myCheckbox3">Check No 3</label>
+    <input type="checkbox" id = "newCheckbox2" name="Check No 3">
+
+    <label for="myCheckbox4">Check No 4</label>
+    <input type="checkbox" id="newCheckbox3" name="Check No 4">
+
+
+    <p id="checkboxStatus">Checkbox is unchecked.</p>
+
+    <script>
+/*
+The Code is checked , whether the checkbox is checked or not.
+*/
+        document.addEventListener("DOMContentLoaded" , function(){
+            debugger;
+         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+         var checkboxStatus = document.getElementById("checkboxStatus");
+
+        function updateCheckboxStatus(checkbox){
+            checkboxStatus.textContent = checkbox.checked ? "Checkbox is checked." : "Checkbox is not checked";
+        }
+        
+     checkboxes.forEach(function (checkbox) {
+       checkbox.addEventListener("change" , function (event){
+         //update the checkbox status
+         updateCheckboxStatus(event.target);      
+         // uncheck other checkbox if the current one is checked
+         if(event.target.checked){
+            checkboxes.forEach(function(otherCheckbox) {
+             if(otherCheckbox !== event.target){
+                if(otherCheckbox.checked){
+                    alert("Please uncheck the " +otherCheckbox.name+ " checkbox before checking another one.");
+                }
+                otherCheckbox.checked = false;
+             }
+            });
+         }
+       });
+    });
+});
+    </script>
+</body>
+</html>
+        

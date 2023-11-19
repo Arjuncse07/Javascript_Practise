@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Station Selector</title>
+</head>
+<body>
+
+    <script>
+        function handleLocationTypeChange() {
+            debugger;
+          var locationType = document.getElementById("locationType").value;
+          var stationNameInput = document.getElementById("stationName");
+    
+          if (locationType === "anyPlace") {
+            // Clear station name input and remove suggestions
+            stationNameInput.value = "";
+            stationNameInput.setAttribute("list", "stationSuggestions");
+          } else if (locationType === "station") {
+            // Set suggestions for station names
+            stationNameInput.value = "";
+            stationNameInput.setAttribute("list", "stationSuggestions");
+          }
+        }
+      </script>
+
+
+
+  <label for="locationType">Select Location Type:</label>
+
+  <select id="locationType" onchange="handleLocationTypeChange()">
+    <option value="anyPlace">Any Place</option>
+    <option value="station">Station</option>
+  </select>
+
+  <br>
+
+  <label for="stationName">Station Name:</label>
+  <input type="text" id="stationName" list="stationSuggestions">
+
+  <datalist id="stationSuggestions">
+    <!-- Add station suggestions dynamically here -->
+    <option value="New Delhi NDLS">
+    <option value="Aligarh ALJN">
+    <option value="Lucknow LKO">
+    <option value="Delhi DL">
+    <option value="Sonipath SNPT">
+    <option value="Dadri DDR">    
+  </datalist>
+
+
+
+</body>
+</html>
